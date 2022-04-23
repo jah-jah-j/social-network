@@ -1,0 +1,36 @@
+
+.content {
+  grid-area: content;
+}
+
+.contentImage img {
+  width: 100%;
+}
+
+.contentUser {
+  display: flex;
+}
+
+.content-user img {
+  max-width: 1.6rem;
+}
+
+.posts {
+
+}
+
+.postsTitle {
+
+}
+
+.postsForm {
+
+}
+
+.postsBlock {
+
+}
+
+.post {
+
+}
