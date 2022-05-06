@@ -1,0 +1,60 @@
+.item {
+  width: .4rem;
+  display: flex;
+  align-items: center;
+}
+
+.item:hover .linkText {
+  visibility: visible;
+  opacity: 1;
+}
+
+.item:hover .link {
+  color: #8224e3;
+}
+
+.settings {
+  margin-top: 0.2rem;
+}
+
+.link {
+  color: #838daa;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: .20rem;
+  display: block;
+  width: .4rem;
+  height: .4rem;
+  transition: all .3s ease-in-out;
+}
+
+.link.activeLink {
+  color: #8224e3;
+}
+
+.linkText {
+  transition: all .3s ease-in-out;
+  z-index: 1;
+  background-color: #383a45;
+  color: #fff;
+  font-size: .14rem;
+  padding: 0.1rem 0.16rem;
+  border-radius: 12px;
+  visibility: hidden;
+  opacity: 0;
+  margin-left: .1rem;
+  position: relative;
+}
+
+.linkText:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-right: 9px solid #383a45;
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -1,15 +1,26 @@
 import React from 'react';
 import s from './MyPosts.module.css';
+import Post from './Post/Post'
+import TextForm from '../../../TextForm/TextForm'
 
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+
+  const postsItems = props.posts.map(p =>
+    <Post key={p.id} message={p.message} likesCount={p.likes} avatarUrl={p.avatar}/>)
+
+  const updateNewPost = (newText) => {
+    props.onPostChange(newText)
+  }
+
   return (
     <div>
       <div className={s.posts}>
         <h2 className={s.postsTitle}>My posts</h2>
-        <div className={s.postsForm}>New posts</div>
+        <TextForm newText={props.newPostText} updateNewTextValue={updateNewPost} addNew={props.onAddPost}
+                  placeholder="Write your post" btnName="Add post"/>
         <div className={s.postsBlock}>
-          <div className={s.post}>post-1</div>
+          {postsItems}
         </div>
       </div>
     </div>

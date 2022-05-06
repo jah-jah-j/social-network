@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
+import {BrowserRouter} from 'react-router-dom'
+import store from './redux/redux-store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root
-  ?
-  root.render(
-    <App/>
-  )
-  :
-  console.error('укажи правильный root')
+
+const rerenderDom = (state) => {
+  root
+    ?
+    root.render(
+      <BrowserRouter>
+        <App state={state} store={store}/>
+      </BrowserRouter>
+    )
+    :
+    console.error('укажи правильный root')
+}
+
+rerenderDom(store.getState());
+
+store.subscribe(() => {
+  rerenderDom(store.getState())
+})

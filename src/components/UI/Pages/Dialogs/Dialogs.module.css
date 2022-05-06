@@ -1,0 +1,61 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.dialogNames, .messages {
+  display: flex;
+  flex-direction: column;
+  row-gap: .05rem;
+  padding: 0.05rem 0.1rem;
+}
+
+.dialog, .message, .myMessage {
+  text-decoration: none;
+  color: #626c72;
+  border: 1px solid #e7edf2;
+  box-shadow: 0 8px 6px -6px rgb(58 46 68 / 5%);
+  border-radius: .12rem;
+}
+
+.dialog {
+  padding: .1rem;
+  border-top-color: #8224e3;
+  display: flex;
+  align-items: center;
+  column-gap: .1rem;
+}
+
+.message, .myMessage {
+  padding: .2rem .3rem;
+  max-width: fit-content !important;
+}
+
+.myMessage {
+  background-color: #8224e3;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.dialog:hover, .message:hover {
+  color: #8224e3;
+  transform: scale(1.1);
+  transition: all .3s;
+}
+
+.myMessage:hover {
+  transform: scale(1.1);
+  transition: all .3s;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.dialogAva {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+}

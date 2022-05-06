@@ -1,0 +1,12 @@
+.friends {
+  max-width: 100%;
+}
+
+.friendsCards {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
+  gap: .2rem;
+  justify-content: center;
+}

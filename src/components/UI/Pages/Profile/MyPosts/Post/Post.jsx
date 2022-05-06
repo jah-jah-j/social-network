@@ -2,17 +2,18 @@ import React from 'react';
 import s from './Post.module.css';
 
 
-const Post = () => {
+const Post = (props) => {
   return (
-    <div>
-      <div className={s.posts}>
-        <h2 className={s.postsTitle}>My posts</h2>
-        <div className={s.postsForm}>New posts</div>
-        <div className={s.postsBlock}>
-          <div className={s.post}>post-1</div>
-        </div>
+    <div className={s.post}>
+      <div className={s.avatar}>
+        <img src={props.avatarUrl} alt=""/>
+      </div>
+      <div>
+        <p className={s.text}>{props.message}</p>
+        <span className={s.likes}>{props.likesCount} likes</span>
       </div>
     </div>
+
   );
 };
 
