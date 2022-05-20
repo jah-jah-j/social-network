@@ -8,23 +8,26 @@ import Music from './components/UI/Pages/Music/Music'
 import Feed from './components/UI/Pages/Feed/Feed'
 import Friends from './components/UI/Pages/Friends/Friends'
 import DialogsContainer from './components/UI/Pages/Dialogs/DialogsContainer'
+import UsersContainer from './components/UI/Pages/Users/UsersContainer'
+import ProfileContainer from './components/UI/Pages/Profile/ProfileContainer'
+import HeaderContainer from './components/UI/Header/HeaderContainer'
 
-const App = (props) => {
+const App = ({state}) => {
 
   return (
     <div className="app">
-      <Header/>
-      <Navbar state={props.state.sidebar.links}/>
+      <HeaderContainer/>
+      <Navbar state={state.sidebar.links}/>
       <div className="app-content">
         <Routes>
-          <Route index path="/*" element={<Profile state={props.state.profilePage}
-                                                   store={props.store}/>}
-          />
-          <Route path="dialogs/*" element={<DialogsContainer store={props.store}/>}
+          <Route path="profile/*" element={<ProfileContainer />}/>
+          <Route path="profile/:userId" element={<ProfileContainer />}/>
+          <Route path="dialogs/*" element={<DialogsContainer/>}
           />
           <Route path="feed" element={<Feed/>}/>
           <Route path="music" element={<Music/>}/>
-          <Route path="friends" element={<Friends state={props.state.sidebar.friends}/>}/>
+          <Route path="friends" element={<Friends state={state.friends}/>}/>
+          <Route path="users" element={<UsersContainer/>}/>
           <Route path="settings" element={<Settings/>}/>
         </Routes>
       </div>
