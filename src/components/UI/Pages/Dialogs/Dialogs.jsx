@@ -2,19 +2,19 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
-import TextForm from '../../TextForm/TextForm'
+import TextForm from '../../../UI-commons/TextForm/TextForm'
 
 
-const Dialogs = (props) => {
+const Dialogs = ({onUpdateMessage, onAddMessage, state}) => {
 
-  const dialogItems = props.state.dialogs
+  const dialogItems = state.dialogs
     .map(dialog => <Dialog state={dialog} key={dialog.id}/>)
 
-  const messagesItems = props.state.messages
+  const messagesItems = state.messages
     .map(message => <Message state={message} key={message.id}/>)
 
   const updateNewMessage = (newText) => {
-    props.onUpdateMessage(newText)
+    onUpdateMessage(newText)
   }
 
   return (
@@ -28,11 +28,11 @@ const Dialogs = (props) => {
           <h3 className={s.title}>Активная переписка:</h3>
           {messagesItems}
           <TextForm
-            addNew={props.onAddMessage}
+            addNew={onAddMessage}
             placeholder="Write your message..."
             btnName="Send message"
             updateNewTextValue={updateNewMessage}
-            newText={props.state.newMessageText}
+            newText={state.newMessageText}
           />
         </div>
       </div>

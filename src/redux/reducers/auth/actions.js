@@ -1,8 +1,23 @@
 import * as types from './types'
+import * as authAPI from '../../../API/authAPI'
 
-export const follow = userId => ({type: types.FOLLOW, userId});
-export const unfollow = userId => ({type: types.UNFOLLOW, userId});
-export const setUsers = users => ({type: types.SET_USERS, users});
-export const setCurrentPage = current => ({type: types.SET_CURRENT_PAGE, current});
-export const setTotalCount = totalNum => ({type: types.SET_TOTAL_COUNT, totalNum});
-export const setIsFetching = isFetching => ({type: types.SET_IS_FETCHING, isFetching});
+export const setIsFetching = (isFetching) => ({type: types.SET_IS_FETCHING, isFetching: isFetching});
+
+export const setAuthData = () => async (dispatch) => {
+  try {
+    dispatch(setIsFetching(true))
+    const response = await authAPI.getAuthData()
+    if (response.data.resultCode === 0) {
+      const {email, id, login} = response.data.data
+      dispatch({type: types.SET_AUTH_DATA, data: {email, id, login}})
+    } else {
+      dispatch(setIsFetching(false))
+    }
+  } catch {
+    dispatch({type: types.SET_AUTH_DATA, data: null})
+  }
+}
+
+
+
+

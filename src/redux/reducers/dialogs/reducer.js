@@ -1,5 +1,4 @@
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
+import * as types from './types'
 
 const initialState = {
   dialogs: [
@@ -34,9 +33,9 @@ const initialState = {
   newMessageText: '',
 };
 
-const dialogsReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_MESSAGE:
+    case types.ADD_MESSAGE:
       const newMessage = {
         id: state.messages.length + 1,
         message: state.newMessageText,
@@ -48,8 +47,8 @@ const dialogsReducer = (state = initialState, action) => {
         newMessageText: ''
       }
 
-    case UPDATE_NEW_MESSAGE_TEXT:
-      return  {
+    case types.UPDATE_NEW_MESSAGE_TEXT:
+      return {
         ...state,
         newMessageText: action.newText
       }
@@ -59,9 +58,4 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageActionCreator = messageBody =>
-  ({type: UPDATE_NEW_MESSAGE_TEXT, newText: messageBody});
-
-export default dialogsReducer;
+export default reducer;

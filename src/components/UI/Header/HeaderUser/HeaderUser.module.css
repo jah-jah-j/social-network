@@ -1,40 +1,7 @@
-
-.header {
-  grid-area: header;
-  background: #fff;
-  display: grid;
-  grid-template-columns: 0.8rem 10fr;
-}
-
-.headerLogo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: .8rem;
-  background-color: #383a45;
-  background-image: linear-gradient(135deg, #4f5261 0%, #383a45 50%);
-}
-
-.headerLogo img {
-  max-width: 0.9rem;
-  max-height: 80%;
-  object-fit: contain;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 0.3rem;
-  width: 3.5rem;
-}
-
-.searchInput {
-  border: none;
-  padding: .03rem .10rem;
-  width: 100%;
-}
-
-.searchInput:focus-visible {
-  outline: none;
+.userPhoto {
+  width: 80px;
+  height: 80px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }

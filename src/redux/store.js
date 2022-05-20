@@ -1,6 +1,4 @@
-import profileReducer from './reducers/profileReducer'
-import dialogsReducer from './reducers/dialogsReducer'
-import sidebarReducer from './reducers/sidebarReducer'
+import reducer from './reducers/sidebar/reducer'
 
 const store = {
   _state: {
@@ -185,9 +183,9 @@ const store = {
   },
 
   dispatch(action) {
-    this._state.profilePage = profileReducer(this._state.profilePage, action);
-    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-    this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+    this._state.profilePage = reducer(this._state.profilePage, action);
+    this._state.dialogsPage = reducer(this._state.dialogsPage, action);
+    this._state.sidebar = reducer(this._state.sidebar, action);
 
     this._subscriber(this);
   }

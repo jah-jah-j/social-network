@@ -1,8 +1,10 @@
 import React from 'react';
 import s from './Header.module.css'
 import {NavLink} from 'react-router-dom'
+import UserInfo from './UserInfo/UserInfo'
 
-const Header = () => {
+const Header = ({auth}) => {
+
   return (
     <header className={s.header}>
       <NavLink to="/" className={s.headerLogo}>
@@ -17,8 +19,8 @@ const Header = () => {
         </svg>
         <input type="text" className={s.searchInput} placeholder="Search..."/>
       </form>
+      <UserInfo auth={auth}/>
     </header>
   )
-}
-
+};
 export default Header;

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Friend.module.css'
-import MyButton from '../../../MyButton/MyButton'
+import MyButton from '../../../../UI-commons/MyButton/MyButton'
 
 const Friend = ({state}) => {
   return <div className={s.friendCard}>

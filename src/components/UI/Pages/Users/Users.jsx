@@ -3,21 +3,25 @@ import s from './Users.module.css'
 import User from './User/User'
 import UsersNav from './UsersNav/UsersNav'
 
-class Users extends React.Component {
+const Users = ({follow, unfollow, state, setCurrentPage, pages}) => {
 
-  usersCards = this.props.users.map(u =>
-    <User key={u.id} state={u}
-          follow={() => this.props.follow(u.id)}
-          unfollow={() => this.props.unfollow(u.id)}
-    />)
-
-  render() {
-    return <div className={s.users}>
-      <UsersNav/>
+  return (
+    <div className={s.users}>
+      <UsersNav currentPage={state.currentPage}
+                pages={pages}
+                setCurrentPage={setCurrentPage}
+      />
       <div className={s.usersCards}>
-        {this.usersCards}
+        {
+          state.users.map(u =>
+            <User key={u.id} user={u}
+                  follow={() => follow(u.id)}
+                  unfollow={() => unfollow(u.id)}
+            />)
+        }
       </div>
     </div>
-  }
-}
+  );
+};
+
 export default Users;

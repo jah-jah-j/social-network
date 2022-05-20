@@ -85,9 +85,8 @@ const initialState = {
   ],
 };
 
-const sidebarReducer = (state = initialState, action) => {
-
+const reducer = (state = initialState, action) => {
   return state;
 };
 
-export default sidebarReducer;
+export default reducer;

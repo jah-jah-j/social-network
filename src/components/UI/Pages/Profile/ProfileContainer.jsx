@@ -1,25 +1,31 @@
-import React, {useEffect, useState} from 'react';
-import s from './Profile.module.css';
-import ProfileInfo from './ProfileInfo/ProfileInfo'
-import MyPostsContainer from './MyPosts/MyPostsContainer'
+import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
+import Profile from './Profile';
+import {profileActions, profileSelectors} from '../../../../redux/reducers/profile';
+import useActions from '../../../../Hooks/useActions';
+import Loader from '../../../UI-commons/Loader/Loader';
+import {useParams} from 'react-router-dom';
+import {authSelectors} from '../../../../redux/reducers/auth';
 
-const Profile = (props) => {
-  const [profile, setProfile] = useState(null)
+const ProfileContainer = () => {
+  const profile = useSelector(profileSelectors.profile)
+  const profileID = useSelector(authSelectors.myID)
+  const {setProfile} = useActions(profileActions)
+  const {userId} = useParams();
 
   useEffect(() => {
-    props.state.profile.then(setProfile)
-  }, [])
+    !userId
+      ? setProfile(profileID ? profileID : 2)
+      : setProfile(userId)
+  }, [userId])
 
   return (
-    <div>
-      <div className={s.coverImage}>
-      </div>
-      <div className="container">
-        {profile && <ProfileInfo profile={profile}/>}
-        <MyPostsContainer />
-      </div>
-    </div>
+    <>
+      {profile
+        ? <Profile profile={profile}/>
+        : <Loader/>}
+    </>
   );
 };
 
-export default Profile;
+export default ProfileContainer;

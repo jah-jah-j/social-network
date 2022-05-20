@@ -1,8 +1,15 @@
 import * as types from './types'
+import * as profileAPI from '../../../API/profileAPI'
 
-export const follow = userId => ({type: types.FOLLOW, userId});
-export const unfollow = userId => ({type: types.UNFOLLOW, userId});
-export const setUsers = users => ({type: types.SET_USERS, users});
-export const setCurrentPage = current => ({type: types.SET_CURRENT_PAGE, current});
-export const setTotalCount = totalNum => ({type: types.SET_TOTAL_COUNT, totalNum});
-export const setIsFetching = isFetching => ({type: types.SET_IS_FETCHING, isFetching});
+export const onPostAdd = () => ({type: types.ADD_POST});
+export const onUpdateNewPost = postBody =>
+  ({type: types.UPDATE_NEW_POST_TEXT, newText: postBody});
+
+export const setProfile = (profileID) => async (dispatch) => {
+  try {
+    const profile = await profileAPI.getProfile(profileID)
+    dispatch({type: types.SET_PROFILE, profile: profile.data})
+  } catch {
+    dispatch({type: types.SET_PROFILE, profile: null})
+  }
+}

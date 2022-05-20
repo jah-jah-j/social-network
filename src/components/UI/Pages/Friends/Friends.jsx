@@ -3,9 +3,9 @@ import s from './Friends.module.css'
 import Friend from './Friend/Friend'
 import FriendsNav from './FriendsNav/FriendsNav'
 
-const Friends = (props) => {
+const Friends = ({state}) => {
 
-  const friendCards = props.state.map(friend => <Friend key={friend.id} state={friend}/>)
+  const friendCards = state.friends.map(friend => <Friend key={friend.id} state={friend}/>)
 
   return <div className={s.friends}>
     <FriendsNav/>

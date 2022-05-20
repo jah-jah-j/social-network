@@ -3,7 +3,7 @@ import * as selectors from './selectors'
 import * as actions from './actions'
 
 export {
-  reducer as usersReducer,
-  selectors as usersSelectors,
-  actions as usersActions
+  reducer as sidebarReducer,
+  selectors as sidebarSelectors,
+  actions as sidebarActions
 }

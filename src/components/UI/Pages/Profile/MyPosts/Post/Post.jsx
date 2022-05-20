@@ -2,15 +2,15 @@ import React from 'react';
 import s from './Post.module.css';
 
 
-const Post = (props) => {
+const Post = ({message, likesCount, avatarUrl}) => {
   return (
     <div className={s.post}>
       <div className={s.avatar}>
-        <img src={props.avatarUrl} alt=""/>
+        <img src={avatarUrl} alt=""/>
       </div>
       <div>
-        <p className={s.text}>{props.message}</p>
-        <span className={s.likes}>{props.likesCount} likes</span>
+        <p className={s.text}>{message}</p>
+        <span className={s.likes}>{likesCount} likes</span>
       </div>
     </div>
 

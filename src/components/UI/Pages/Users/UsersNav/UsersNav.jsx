@@ -1,16 +1,33 @@
 import React from 'react';
+import styles from './UsersNav.module.css'
+import MyButton from '../../../../UI-commons/MyButton/MyButton'
 
-const FriendsNav = (props) => {
-  return <div>
-    <nav>
-      <span>All friends</span>
-      <span>Friends Online</span>
-    </nav>
+const UsersNav = ({currentPage, pages, setCurrentPage}) => {
+  return (
     <div>
-      <span>search friends</span>
-      <span>filter</span>
+      <div className={styles.usersNav}>
+        <nav>
+          <span>All users</span>
+          <span>Users Online</span>
+        </nav>
+        <nav>
+          <span>Search users</span>
+          <span>Filter</span>
+        </nav>
+      </div>
+      <div className={styles.pagination}>
+        {
+          pages.map(p => {
+            return (
+              <div key={p} className={currentPage === p ? styles.currentPage : ''}>
+                <MyButton onClick={() => setCurrentPage(p)} text={p}></MyButton>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
-  </div>
-}
+  )
+};
 
-export default FriendsNav;
+export default UsersNav;

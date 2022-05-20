@@ -1,25 +1,19 @@
 import React from 'react';
-import {addPostActionCreator, updateNewPostActionCreator} from '../../../../../redux/reducers/profileReducer'
+import {useSelector} from 'react-redux'
 import MyPosts from './MyPosts'
+import {profileActions, profileSelectors} from '../../../../../redux/reducers/profile'
+import useActions from '../../../../../Hooks/useActions'
 
+const MyPostsContainer = () => {
+  const myPostsState = useSelector(profileSelectors.myPosts);
 
-const MyPostsContainer = (props) => {
+  const {onPostAdd, onUpdateNewPost} = useActions(profileActions)
 
-  const state = props.store.getState()
-
-  const updateNewPost = (newText) => {
-    props.store.dispatch(updateNewPostActionCreator(newText))
-  }
-
-  const addPost = () => {
-    props.store.dispatch(addPostActionCreator())
-  }
-
-  return <MyPosts onAddPost={addPost}
-                  onPostChange={updateNewPost}
-                  posts={state.profilePage.posts}
-                  newPostText={state.profilePage.newPostText}
+  return <MyPosts posts={myPostsState.posts}
+                  newPostText={myPostsState.newPostText}
+                  onUpdateNewPost={onUpdateNewPost}
+                  onPostAdd={onPostAdd}
   />
-};
+}
 
 export default MyPostsContainer;

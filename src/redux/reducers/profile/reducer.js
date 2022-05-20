@@ -1,9 +1,7 @@
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_POST = 'ADD-POST';
+import * as types from './types'
 
 const initialState = {
-  profile: fetch('https://jsonplaceholder.typicode.com/users/1')
-    .then(res => res.json()),
+  profile: null,
   posts: [
     {
       id: 1,
@@ -39,9 +37,9 @@ const initialState = {
   newPostText: '',
 };
 
-const profileReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case types.ADD_POST:
       const newPost = {
         id: state.posts.length + 1,
         message: state.newPostText,
@@ -54,10 +52,17 @@ const profileReducer = (state = initialState, action) => {
         newPostText: ''
       }
 
-    case UPDATE_NEW_POST_TEXT:
+    case types.UPDATE_NEW_POST_TEXT:
       return {
         ...state,
         newPostText: action.newText
+      }
+
+    case types.SET_PROFILE:
+
+      return {
+        ...state,
+        profile: action.profile
       }
 
     default:
@@ -65,8 +70,4 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostActionCreator = postBody =>
-  ({type: UPDATE_NEW_POST_TEXT, newText: postBody});
-
-export default profileReducer;
+export default reducer;

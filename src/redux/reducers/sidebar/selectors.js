@@ -1,2 +1,2 @@
 
-export const users = state => state.usersPage;
+export const sidebar = state => state.sidebar;

@@ -33,3 +33,26 @@
   text-overflow: ellipsis;
   color: #4f515b;
 }
+
+.aboutProfile {
+  display: block;
+  font-size: .18rem;
+  margin-bottom: .15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #4f515b;
+}
+
+.contacts {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: .1rem;
+  margin-bottom: .15rem;
+}
+
+.contact {
+  font-size: .15rem;
+  text-overflow: ellipsis;
+  color: #4f515b;
+}

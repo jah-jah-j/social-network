@@ -1,9 +1,9 @@
-
 .header {
   grid-area: header;
   background: #fff;
   display: grid;
-  grid-template-columns: 0.8rem 10fr;
+  grid-template-columns: 0.8rem 4fr 1fr;
+  align-items: center;
 }
 
 .headerLogo {

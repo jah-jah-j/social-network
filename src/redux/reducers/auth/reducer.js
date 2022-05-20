@@ -1,50 +1,29 @@
 import * as types from './types'
 
-
 const initialState = {
-  users: [],
-  pageSize: 4,
-  totalPages: 0,
-  currentPage: 1,
-  isFetching: true,
+  email: null,
+  userId: null,
+  login: null,
+  isAuth: false,
+  isFetching: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case types.FOLLOW:
+    case types.SET_AUTH_DATA:
       return {
         ...state,
-        users: state.users.map(u => {
-          if (u.id === action.userId) {
-            return {...u, isFollow: true};
-          }
-          return u;
-        })
+        ...action.data,
+        isAuth: true,
+        isFetching: false
       }
-
-    case types.UNFOLLOW:
-      return {
-        ...state,
-        users: state.users.map(u => {
-          if (u.id === action.userId) {
-            return {...u, isFollow: false};
-          }
-          return u;
-        })
-      }
-
-    case types.SET_USERS:
-      return {...state, users: action.users};
-
-    case types.SET_CURRENT_PAGE:
-      return {...state, currentPage: action.current};
-
-    case types.SET_TOTAL_COUNT:
-      return {...state, totalPages: action.totalNum};
 
     case types.SET_IS_FETCHING:
-      return {...state, isFetching: action.isFetching};
+      return {
+        ...state,
+        isFetching: action.isFetching
+      };
 
     default:
       return state;

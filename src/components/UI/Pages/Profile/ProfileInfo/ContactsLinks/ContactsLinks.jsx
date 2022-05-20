@@ -1,41 +1,21 @@
 import React from 'react';
-import s from './ProfileInfo.module.css';
+import s from '../ProfileInfo.module.css'
 
+const ContactLink = ({link, name}) => {
+  if (link) {
+    return <a target="_blank" href={link.includes('https://') ? link : `https://${link}`}
+              className={s.contact}>{name}</a>
+  }
+  return null
+}
 
-const ProfileInfo = ({profile}) => {
-
+const ContactsLinks = ({names, links}) => {
   return (
-    <div className={s.contentUser}>
-      <img
-        src={profile.photos.large}
-        alt="" className={s.avatar}
-        width="60px"/>
-      <div className={s.userName}>{profile.fullName}</div>
-      <div className={s.contacts}>
-        <span>Контакты:</span>
-        <ContactLink />
-        profile.contacts.website && <a href={profile.contacts.website}
-                                        className={s.contact}>website
-                                      </a>
-        profile.contacts.vk && <a href={profile.contacts.vk}
-                                        className={s.contact}>vk
-                                      </a>
-        profile.contacts.twitter && <a href={profile.contacts.twitter}
-                                        className={s.contact}>twitter
-                                      </a>
-        profile.contacts.instagram && <a href={profile.contacts.instagram}
-                                        className={s.contact}>instagram
-                                      </a>
-        profile.contacts.website && <a href={profile.contacts.website}
-                                        className={s.contact}>{profile.contacts.website}
-                                      </a>
-        profile.contacts.website && <a href={profile.contacts.website}
-                                        className={s.contact}>{profile.contacts.website}
-                                      </a>
-      </div>
-
+    <div className={s.contacts}>
+      <span>Контакты:</span>
+      {links.map((link, index) => <ContactLink key={index} link={link} name={names[index]}/>)}
     </div>
   );
 };
 
-export default ProfileInfo;
+export default ContactsLinks;
