@@ -64,7 +64,16 @@ const initialState = {
       }
     },
     {
-      id: 6, path: '/settings', linkName: 'Settings', isSettings: true,
+      id: 6, path: '/users', linkName: `All users`,
+      icon: () => {
+        return <svg fill="none" height="40" viewBox="0 0 20 20" width="40" xmlns="http://www.w3.org/2000/svg">
+          <path clipRule="evenodd" d="M10 7.75a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zM7.25 6.5a2.75 2.75 0 115.5 0 2.75 2.75 0 01-5.5 0zm-.5 7.25c0-.42.23-.83.8-1.17A4.81 4.81 0 0110 12c1.03 0 1.88.23 2.45.58.57.34.8.75.8 1.17 0 .3-.1.44-.22.54-.14.11-.4.21-.78.21h-4.5c-.39 0-.64-.1-.78-.21-.12-.1-.22-.25-.22-.54zM10 10.5c-1.22 0-2.37.27-3.23.8-.88.53-1.52 1.37-1.52 2.45 0 .7.28 1.3.78 1.71.48.39 1.1.54 1.72.54h4.5c.61 0 1.24-.15 1.72-.54.5-.4.78-1 .78-1.71 0-1.08-.64-1.92-1.52-2.45-.86-.53-2-.8-3.23-.8zm4-5.59c.06-.4.44-.7.85-.64a2.5 2.5 0 01-.35 4.98.75.75 0 010-1.5 1 1 0 00.14-1.99.75.75 0 01-.63-.85zM15.76 10a.75.75 0 000 1.5c1.16 0 1.75.67 1.75 1.25 0 .22-.07.41-.19.55-.1.12-.24.2-.46.2a.75.75 0 000 1.5c1.43 0 2.15-1.21 2.15-2.25 0-1.71-1.6-2.75-3.25-2.75zM5 10.75a.75.75 0 00-.75-.75C2.61 10 1 11.04 1 12.75 1 13.79 1.72 15 3.15 15a.75.75 0 000-1.5.57.57 0 01-.47-.2.86.86 0 01-.18-.55c0-.58.6-1.25 1.75-1.25.41 0 .75-.34.75-.75zm.14-6.47a.75.75 0 01.22 1.48 1 1 0 00.14 1.99.75.75 0 110 1.5 2.5 2.5 0 01-.36-4.97z" fill="currentColor" fillRule="evenodd">
+          </path>
+        </svg>
+      }
+    },
+    {
+      id: 7, path: '/settings', linkName: 'Settings', isSettings: true,
       icon: () => {
         return <svg fill="none" height="40" viewBox="0 0 20 20" width="40" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -74,28 +83,6 @@ const initialState = {
       }
     },
   ],
-  friends: [
-    {
-      id: 1, name: 'Illdian', isOnline: true,
-      avatar: 'https://i.guim.co.uk/img/media/35d054f84a7fa5f7e7180353158bb00e0cc19566/0_103_3000_1800/master/3000.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=057da8f162bcddb77c9bb8d8cca1aa40'
-    },
-    {
-      id: 2, name: 'Arthas', isOnline: true,
-      avatar: 'https://m3.healio.com/~/media/slack-news/infectious-disease/misc/infographics/2021/12_december/idn1221teres_graphic_01_web.jpg'
-    },
-    {
-      id: 3, name: 'Malfurion', isOnline: false,
-      avatar: 'https://www.cbc.ca/kids/images/chinaanimals_header.jpg'
-    },
-    {
-      id: 4, name: 'Tiranda', isOnline: false,
-      avatar: 'https://aldf.org/wp-content/uploads/2018/05/lamb-iStock-665494268-16x9-e1559777676675.jpg'
-    },
-    {
-      id: 5, name: 'Kil\'Jedan', isOnline: true,
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgLalL8uhMRLwNiaLkgpD-TG89-t4hhaCMTLAujv7nTyAGhWIx1jrcCU1pFVxgyCmaDtI&usqp=CAU'
-    },
-  ]
 };
 
 const sidebarReducer = (state = initialState, action) => {

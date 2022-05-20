@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './TextForm.module.css';
-import MyButton from '../MyButton/MyButton'
+import MyButton from '../../UI-commons/MyButton/MyButton'
 
 const TextForm = (props) => {
 

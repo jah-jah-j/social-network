@@ -42,18 +42,24 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
-      const post = {
+      const newPost = {
         id: state.posts.length + 1,
         message: state.newPostText,
         likes: 0,
         avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
       };
-      state.posts.push(post);
-      state.newPostText = '';
-      return state;
+      return {
+        ...state,
+        posts: [...state.posts, newPost],
+        newPostText: ''
+      }
+
     case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+      return {
+        ...state,
+        newPostText: action.newText
+      }
+
     default:
       return state;
   }
