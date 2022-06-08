@@ -1,1 +1,1 @@
-## https://jah-jah-j.github.io/social-network/
+## здесь будет ссылка на деплой, когда заверну проект
